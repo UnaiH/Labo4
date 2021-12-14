@@ -83,7 +83,7 @@ class ValueIterationAgent(ValueEstimationAgent):
         for tStateProb in transStatesProb:
             tstate = tStateProb[0]
             prob = tStateProb[1]
-            reward = mdp.getRewards(state, action, tstate)
+            reward = mdp.getReward(state, action, tstate)
             valor = self.getValue(tstate)
             qValue += prob * (reward + self.discount * valor)
         return qValue
