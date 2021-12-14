@@ -77,7 +77,16 @@ class ValueIterationAgent(ValueEstimationAgent):
           value function stored in self.values.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        qValue=0
+        mdp = self.mdp
+        transStatesProb = mdp.getTransitionStatesAndProbs(state, action)
+        for tStateProb in transStatesProb:
+            tstate = tStateProb[0]
+            prob = tStateProb[1]
+            reward = mdp.getRewards(state, action, tstate)
+            valor = self.getValue(tstate)
+            qValue += prob * (reward + self.discount * valor)
+        return qValue
 
     def computeActionFromValues(self, state):
         """
