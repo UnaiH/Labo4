@@ -63,11 +63,13 @@ class ValueIterationAgent(ValueEstimationAgent):
         # Write value iteration code here
         "*** YOUR CODE HERE ***"
         estados = self.mdp.getStates()
-        for i in range(0, self.runValueIteration):
+        for i in range(0, self.iterations):
             nuevos = util.Counter()
             for state in estados:
                 accion = self.getAction(state)
-                nuevos[state] = self.getQValue(state, accion)
+                if accion is not None:
+                    nuevos[state] = self.getQValue(state, accion)
+            self.values = nuevos
 
 
 
