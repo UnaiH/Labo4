@@ -110,7 +110,7 @@ class ValueIterationAgent(ValueEstimationAgent):
         politica = util.Counter()
         mdp=self.mdp
         posibles=mdp.getPossibleActions(state)
-        if len(posibles)<0:
+        if len(posibles)<=0:
             return None
         else:
             for accion in posibles:
